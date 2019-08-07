@@ -103,7 +103,7 @@ comments_provider: gitalk
 # https://github.com/gitalk/gitalk#install
 gitalk:
     owner: wxblog
-    repo: wxblog
+    repo: blog-comments
     clientID: 45167035937aa9d09647
     clientSecret: 18cf37b30d969e658a5f35aa9c7d0a382efb8a72
 # 在使用其它评论组件时可点击显示 Disqus
