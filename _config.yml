@@ -124,6 +124,3 @@ simple_jekyll_search:
 # ---------------- #
 google:
     analytics_id: UA-80669434-1
-=======
-theme: jekyll-theme-cayman
->>>>>>> 1fe2036662044d8d341ac32474ba2537062f31fc
