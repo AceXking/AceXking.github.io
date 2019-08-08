@@ -6,13 +6,6 @@ description: 一份简明的 Markdown 笔记与教程
 keywords: Markdown, VSCode
 ---
 
-为部门内知识分享准备的素材，记录了 Markdown 的优点、应用场景和编辑工具，介绍了标准语法与扩展语法，以及一些应用 Markdown 的奇技淫巧。个人使用 Markdown 的经验持续补充中，最新完整版请参见
-
-<https://github.com/mzlogin/markdown-intro>
-
----
-
-自从 2014 年左右接触到 Markdown 以来，对它的使用就一发而不可收拾。从最开始使用它在 GitHub Pages 里写博客，到用它编辑项目的 README 文件，再到撰写开发文档，编辑微信公众号文章和邮件内容等等，这期间也见证了它在各类平台和网站上的普及和被原生支持，可以说，Markdown 如今已经渗透了我在技术和网络活动的方方面面，成为了我撰写文本文档的首选。
 
 那么首先我们一起来看一下它的「定义」：
 
@@ -246,41 +239,41 @@ Markdown 支持行内式链接和引用式链接。
 **Markdown：**
 
 ```
-行内式 [博客](https://mazhuang.org "我的个人博客") 链接，带 title。
+行内式 [博客](https://acexking.github.io "我的个人博客") 链接，带 title。
 
-行内式 [GitHub](https://github.com/mzlogin) 链接。
+行内式 [GitHub](https://github.com/AceXking) 链接。
 
 引用式 [博客][1] 链接。
 
 引用式 [GitHub][2] 链接，带 title。
 
-[1]: https://mazhuang.org
-[2]: https://github.com/mzlogin "我的 GitHub 主页"
+[1]: https://acexking.github.io
+[2]: https://github.com/AceXking "我的 GitHub 主页"
 ```
 
 **预览效果：**
 
-行内式 [博客](https://mazhuang.org "我的个人博客") 链接，带 title。
+行内式 [博客](https://acexking.github.io "我的个人博客") 链接，带 title。
 
-行内式 [GitHub](https://github.com/mzlogin) 链接。
+行内式 [GitHub](https://github.com/AceXking) 链接。
 
 引用式 [博客][1] 链接。
 
 引用式 [GitHub][2] 链接，带 title。
 
-[1]: https://mazhuang.org
-[2]: https://github.com/mzlogin "我的 GitHub 主页"
+[1]: https://acexking.github.io
+[2]: https://github.com/AceXking "我的 GitHub 主页"
 
 **对应 HTML：**
 
 ```html
-<p>行内式 <a href="https://mazhuang.org" title="我的个人博客">博客</a> 链接，带 title。</p>
+<p>行内式 <a href="https://acexking.github.io" title="我的个人博客">博客</a> 链接，带 title。</p>
 
-<p>行内式 <a href="https://github.com/mzlogin">GitHub</a> 链接。</p>
+<p>行内式 <a href="https://github.com/AceXking">GitHub</a> 链接。</p>
 
-<p>引用式 <a href="https://mazhuang.org">博客</a> 链接。</p>
+<p>引用式 <a href="https://acexking.github.io">博客</a> 链接。</p>
 
-<p>引用式 <a href="https://github.com/mzlogin" title="我的 GitHub 主页">GitHub</a> 链接，带 title。</p>
+<p>引用式 <a href="https://github.com/AceXking" title="我的 GitHub 主页">GitHub</a> 链接，带 title。</p>
 ```
 
 ### 图片
@@ -290,17 +283,17 @@ Markdown 支持行内式链接和引用式链接。
 **Markdown：**
 
 ```
-![Alt text](https://mazhuang.org/favicon.ico "favicon")
+![Alt text](https://acexking.github.io/favicon.ico "favicon")
 ```
 
 **预览效果：**
 
-![Alt text](https://mazhuang.org/favicon.ico "favicon")
+![Alt text](https://acexking.github.io/favicon.ico "favicon")
 
 **对应 HTML：**
 
 ```html
-<img src="https://mazhuang.org/favicon.ico" alt="Alt text" title="favicon">
+<img src="https://acexking.github.io/favicon.ico" alt="Alt text" title="favicon">
 ```
 
 ### 列表
@@ -622,13 +615,13 @@ https://github.com
 
 以上功能基本都可以用 VSCode + 插件 Markdown Preview Enhanced 实现。
 
-另外可以参考我以前的一篇博客 [关于 Markdown 的一些奇技淫巧](https://mazhuang.org/2017/09/01/markdown-odd-skills/)。
+另外可以参考我以前的一篇博客 [关于 Markdown 的一些奇技淫巧](https://acexking.github.io/2017/09/01/markdown-odd-skills/)。
 
 ## 参考
 
 * [Markdown: Syntax - DARING FIREBALL](https://daringfireball.net/projects/markdown/syntax)
 * [Markdown - 维基百科](https://zh.wikipedia.org/wiki/Markdown)
 * [GitHub Flavored Markdown Spec](https://github.github.com/gfm/)
-* [关于 Markdown 的一些奇技淫巧](https://mazhuang.org/2017/09/01/markdown-odd-skills/)
+* [关于 Markdown 的一些奇技淫巧](https://acexking.github.io/2017/09/01/markdown-odd-skills/)
 
 ---
