@@ -1,3 +1,10 @@
+---
+layout: wiki
+title: mongodb
+categories: mongodb
+description: mongodb的一些常用命令和用法。
+keywords: mongodb
+---
 # 1.mongodb
 
 MongoDB 是由C++语言编写的，是一个基于分布式文件存储的开源数据库系统。 
