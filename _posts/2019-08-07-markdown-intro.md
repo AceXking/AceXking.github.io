@@ -151,15 +151,15 @@ Setext-style 一级标题
 **对应 HTML：**
 
 ```html
-<p>白日依山尽，</p>
+<p>锄禾日当午，</p>
 
-<p>黄河入海流。
+<p>汗滴禾下土。
 （句号后面没有空格）</p>
 
-<p>欲穷千里目，</p>
+<p>谁知盘中餐，</p>
 
 <p>
-  更上一层楼。
+  粒粒皆辛苦。
   <br>
   （句号后面有俩空格）
 </p>
@@ -598,10 +598,6 @@ https://github.com
 
 可以将公众号素材用 Markdown 编辑好后，贴到在线排版工具以后，复制到公众号编辑器里即可。有多种页面主题和代码主题可选择。
 
-我维护的工具地址：<https://md.mazhuang.org>
-
-![微信公众号](https://raw.githubusercontent.com/mzlogin/markdown-intro/master/assets/wechat-markdown.png)
-
 ### 更多
 
 想象力丰富的工程师们还扩展了很多基于 Markdown 的玩法，包括但不限于：
@@ -615,7 +611,6 @@ https://github.com
 
 以上功能基本都可以用 VSCode + 插件 Markdown Preview Enhanced 实现。
 
-另外可以参考我以前的一篇博客 [关于 Markdown 的一些奇技淫巧](https://acexking.github.io/2017/09/01/markdown-odd-skills/)。
 
 ## 参考
 
