@@ -12,7 +12,7 @@ JavaScript 的类型分为两种：原始数据类型和对象类型。
 布尔值是最基础的数据类型，在 `TypeScript` 中，使用 `boolean` 定义布尔值类型：
 以下都编译通过的,并且给出了说明,一句话总结,是什么类型就要赋值给什么类型,这句话够俗了吧
 ### 正确的写法
-````
+```typescript
 ➖➖➖➖➖➖➖➖➖布尔➖➖➖➖➖➖➖➖➖
 // 布尔值
 let isDone: boolean = false;  
@@ -49,9 +49,9 @@ let unusable: void = undefined;
 // undefined 类型的变量只能被赋值为 undefined，null 类型的变量只能被赋值为 null
 let u: undefined = undefined;
 let n: null = null;
-````
+```
 ### 错误的写法
-````
+```typescript
 注意:正确的很好记,大多数人都会写正确的,关键是要记住这些错误的!!!
 ➖➖➖➖➖➖➖➖➖布尔➖➖➖➖➖➖➖➖➖
 // 注意，使用构造函数 `Boolean` 创造的对象不是布尔值
@@ -75,10 +75,10 @@ let unusable: void = 'I love you';❌
 // undefined 类型的变量只能被赋值为 undefined，null 类型的变量只能被赋值为 null
 let u: undefined = 888;❌
 let n: null = 999;❌
-````
+```
 ## 任意值
 ### 正确的写法
-````
+```typescript
 // 顾名思义,可以被任何值赋值
 let anyThing: any = 'hello';
 let anyThing: any = 888;
@@ -89,24 +89,24 @@ let anyThing: any = undefined;
 // 变量如果在声明的时候，未指定其类型，那么它会被识别为任意值类型：
 let any;
 any =true;
-````
+```
 ### 错误的写法
 没有错误的写法~
 ## 类型推论
 ### 正确的写法
-````
+```typescript
 // 如果没有明确的指定类型，那么 TypeScript 会依照类型推论（Type Inference）的规则推断出一个类型。
 let myFavoriteNumber = 'seven';  等价于  let myFavoriteNumber :string= 'seven';
-````
+```
 ### 错误的写法
-````
+```typescript
 // 第一句已经被推论为String类型了
 let myFavoriteNumber = 'seven';
 myFavoriteNumber = 7;❌
-````
+```
 ## 联合类型
 ### 正确的写法
-````
+```typescript
 // 联合类型（Union Types）表示取值可以为多种类型中的一种。
 // 当你允许某个变量被赋值多种类型的时候,使用联合类型,管道符进行连接
 let myFavoriteNumber: string | number;
@@ -117,17 +117,17 @@ myFavoriteNumber = 7;
 function getString(something: string | number): string {
     return something.toString();
 }
-````
+```
 ### 错误的写法
-````
+```typescript
 // number类型没有length属性.所以编译错误,因为我们只能访问此联合类型的所有类型里共有的属性或方法：
 function getLength(something: string | number): number {❌
     return something.length;
 }
-````
+```
 ## 对象的类型——接口
 ### 正确的写法
-````
+```typescript
 // 赋值的时候，变量的形状必须和接口的形状保持一致(不能多也不能少,类型还必须一致)
 interface Person {
     name: string;
@@ -184,9 +184,9 @@ let tom: Person = {
     name: 'Tom',
     gender: 'male'
 };
-````
+```
 ### 错误的写法
-````
+```typescript
 // 一旦定义了任意属性，那么确定属性和可选属性的类型都必须是它的类型的子集
 interface Person {
     name: string;
@@ -216,9 +216,9 @@ let tom: Person = {
 
 tom.id = 89757; // 不能被二次赋值❌
 数组的类型
-````
+```
 ### 正确的做法
-````
+```typescript
 let fibonacci: number[] = [1, 1, 2, 3, 5];
 let fibonacci: Array<number> = [1, 1, 2, 3, 5];
 
@@ -235,9 +235,9 @@ let list: any[] = ['Xcat Liu', 25, { website: 'http://xcatliu.com' }];
 function sum() {
     let args: IArguments = arguments;
 }
-````
+```
 ### 错误的做法
-````
+```typescript
 // 数组的项中不允许出现其他的类型：
 let fibonacci: number[] = [1, '1', 2, 3, 5];❌
 
@@ -250,10 +250,10 @@ fibonacci.push('8');❌
 function sum() {❌
     let args: number[] = arguments;
 }
-````
+```
 ## 函数的类型
 ### 正确的做法
-````
+```typescript
 // 需要把输入和输出都考虑到
 function sum(x: number, y: number): number {
     return x + y;
@@ -304,9 +304,9 @@ function push(array: any[], ...items: any[]) {
 
 let a = [];
 push(a, 1, 2, 3);
-````
+```
 ### 错误的做法
-````
+```typescript
 // 输入多余的（或者少于要求的）参数，是不被允许的：
 function sum(x: number, y: number): number {
     return x + y;
@@ -330,10 +330,10 @@ function buildName(firstName?: string, lastName: string) {❌
 }
 let tomcat = buildName('Tom', 'Cat');
 let tom = buildName(undefined, 'Tom');
-````
+```
 ## 断言
 ### 正确的做法
-````
+```typescript
 // 可以使用类型断言，将 something 断言成 string
 function getLength(something: string | number): number {
     if ((<string>something).length) {
@@ -342,17 +342,17 @@ function getLength(something: string | number): number {
         return something.toString().length;
     }
 }
-````
+```
 ### 错误的做法
-````
+```typescript
 // 只能访问此联合类型的所有类型里共有的属性或方法
 function getLength(something: string | number): number { ❌
     return something.length;
 }
-````
+```
 ## 类型别名
 ### 正确的做法
-````
+```typescript
 // 使用 type 创建类型别名,类型别名常用于联合类型
 type Name = string;
 type NameResolver = () => string;
@@ -364,10 +364,10 @@ function getName(n: NameOrResolver): Name {
         return n();
     }
 }
-````
+```
 ## 枚举
 ### 正确的做法
-````
+```typescript
 // 枚举（Enum）类型用于取值被限定在一定范围内的场景，比如一周只能有七天 
 // 枚举就是枚举值到枚举名进行反向映射
 
@@ -377,11 +377,11 @@ console.log(Days[0]); // 'Sun'
 
 enum Days {Sun = 7, Mon = 1, Tue, Wed, Thu, Fri, Sat};
 console.log(Days["Sun"]); // 7
-````
+```
 
 ## 类
 ### 正确的做法
-````
+```typescript
 ➖➖➖➖➖➖➖➖➖类➖➖➖➖➖➖➖➖➖
 class Animal {
     constructor(name) {
@@ -442,18 +442,18 @@ abstract class Animal {
   }
 }
 // 子类必须实现抽象类的抽象方法
-````
+```
 ### public private 和 protected
-````
+```typescript
 public 修饰的属性或方法是公有的，可以在任何地方被访问到，默认所有的属性和方法都是 public 的
 private 修饰的属性或方法是私有的，不能在声明它的类的外部访问
 protected 修饰的属性或方法是受保护的，它和 private 类似，区别是它在子类中也是允许被访问的
-````
+```
 ### 泛型
 >泛型就是解决 类 接口 方法的复用性、以及对不特定数据类型的支持
 
 ### 正确的做法
-````
+```typescript
 //只能返回string类型的数据
 function getData(value:string):string{
   return value;
@@ -485,4 +485,4 @@ var getData:ConfigFn=function<T>(value:T):T{
 }
 getData<string>('张三');
 getData<string>(1243);  //错误
-````
+```
