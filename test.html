@@ -12,23 +12,29 @@
 <body>
   <div id="app">
     <h2 class="title">
-      {{ title }}
+      {{ title }} 
     </h3>
     <div class="flex-box">
       <div class="left flex-1">
         <div>用户：<span style="color:red">时尚</span></div>
         <div>余额：<span class="gold">￥{{ benjin }}</span></div>
+        <div>赔率: <span style="color: green;">2.0</span></div>
       </div>
       <div class="right flex-1">
         <template>
-          <el-radio v-model="radio" label="1">win</el-radio>
-          <el-radio v-model="radio" label="2">lose</el-radio>
+          <el-radio v-model="radio" :label="true" :disabled="disabled">win</el-radio>
+          <el-radio v-model="radio" :label="false" :disabled="disabled">lose</el-radio>
         </template>
-        <div><span>投：</span><el-input v-model="xiazhu" type="number" size="small" @input="inputEvent" ></el-input></div>
+        <div><span>投：</span><el-input v-model="xiazhu" type="number" size="small" @input="inputEvent" :disabled="disabled"></el-input></div>
         <div style="margin-top: 10px;">
-          <el-button size="small" @click="qdBtn">确定/开奖</el-button>
+          <el-button size="small" @click="qdBtn" :disabled="disabled">确定/开奖</el-button>
         </div>
       </div>
+    </div>
+    
+    <div class="zhanshi">
+        <span>开奖区</span>
+        <div class="linshi">{{ linshi }}</div>
     </div>
   </div>
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
@@ -37,10 +43,14 @@
     var app = new Vue({
       el: '#app',
       data: {
-        radio: '1',
+        disabled: false,
+        radio: false,
         title: '菠菜',
         benjin: 100000,
-        xiazhu: ''
+        peilv: 2,
+        xiazhu: '',
+        bol: true,
+        linshi: ''
       },
       methods: {
         inputEvent() {
@@ -49,11 +59,45 @@
           }
         },
         qdBtn() {
+          if (!this.xiazhu) {
+            this.$message('没有白嫖')
+            return
+          }
           if(this.benjin - this.xiazhu < 0) {
             this.$message('余额不足')
             return
           }
-
+          this.benjin = this.benjin - this.xiazhu
+          // 随机数
+          this.disabled = true
+          const arr = [true, false];
+          this.bol = arr[Math.floor(Math.random()*arr.length)];
+          console.log(this.bol)
+          this.donghua()
+        },
+        donghua() {
+          this.linshi = 'win'
+          const timeQ = setInterval(() => {
+            this.linshi = this.linshi == 'win' ? 'lose' :'win'
+          },100)
+          setTimeout(()=>{
+            clearInterval(timeQ)
+            this.linshi = this.bol ? 'win' : 'lose'
+            this.disabled = false
+            this.jg()
+          },1000)
+        },
+        jg() {
+          if(this.bol == this.radio) {
+            const ying = this.xiazhu * this.peilv
+            this.$message({
+              type: 'success',
+              message: '你赢了:￥' + ying
+            })
+           this.benjin =  this.benjin + this.xiazhu * this.peilv 
+          } else {
+            this.$message('你输了:￥' + this.xiazhu)
+          }
         }
       }
     }).$mount('#app')
@@ -76,6 +120,18 @@ body {
 }
 .gold {
   color: gold;
+}
+.zhanshi {
+  text-align: center;
+  margin-top: 20px;
+}
+.linshi {
+  width: 100px;
+  height: 100px;
+  line-height: 100px;;
+  border: 1px solid #ddd;
+  margin: 0 auto;
+  color: crimson
 }
 </style>
 </html>
