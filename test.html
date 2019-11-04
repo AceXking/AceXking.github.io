@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+
+<body>
+  <div id="app">
+    <h2 class="title">
+      {{ title }}
+    </h3>
+    <div class="flex-box">
+      <div class="left flex-1">
+        <div>用户：<span style="color:red">时尚</span></div>
+        <div>余额：<span class="gold">￥{{ benjin }}</span></div>
+      </div>
+      <div class="right flex-1">
+        <template>
+          <el-radio v-model="radio" label="1">win</el-radio>
+          <el-radio v-model="radio" label="2">lose</el-radio>
+        </template>
+        <div><span>投：</span><el-input v-model="xiazhu" type="number" size="small" @input="inputEvent" ></el-input></div>
+        <div style="margin-top: 10px;">
+          <el-button size="small" @click="qdBtn">确定/开奖</el-button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        radio: '1',
+        title: '菠菜',
+        benjin: 100000,
+        xiazhu: ''
+      },
+      methods: {
+        inputEvent() {
+          if(this.xiazhu < 1) {
+            this.xiazhu = ''
+          }
+        },
+        qdBtn() {
+          if(this.benjin - this.xiazhu < 0) {
+            this.$message('余额不足')
+            return
+          }
+
+        }
+      }
+    }).$mount('#app')
+  </script>
+</body>
+<style>
+body {
+  color: #444;
+}
+.title {
+  text-align: center;
+  color: green;
+}
+.flex-box {
+  display: flex;
+  width: 100%;
+}
+.flex-1 {
+  flex: 1;
+}
+.gold {
+  color: gold;
+}
+</style>
+</html>
