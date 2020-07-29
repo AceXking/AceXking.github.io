@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>利息</title>
+	<link href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.13.2/theme-chalk/index.css" rel="stylesheet">
+	<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js"></script>
+	<script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.13.2/index.js"></script>
+	<style type="text/css">
+		.line {
+			line-height: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div class="line"><el-tag>总金额: {{total}} 元</el-tag></div>
+		<div class="line"><el-tag type="success">计算日期: {{kssj}}</el-tag></div>
+		<div class="line"><el-tag>利率: {{lv * 100}} %</el-tag></div>
+		<div class="line"><el-tag type="success">天数: {{ts}}天</el-tag></div>
+		<div class="line"><el-tag>总利息: {{lx}}元</el-tag></div>
+	</div>
+	<script type="text/javascript">
+		var app = new Vue({
+      el: '#app',
+		  data: {
+		  	kssj: '2020-07-10',
+		  	total: 15000,
+		  	lv: 0.0002,
+		  	ts: 0,
+		  	lx: 0
+		  },
+		  created() {
+		  	this.jssjc()
+		  },
+		  methods: {
+		  	jssjc() {
+		  		this.ts = Math.floor((new Date().getTime() - new Date(this.kssj).getTime()) / (24*3600*1000))
+		  		this.lx = this.total * this.lv * this.ts
+		  	}
+		  }
+		}).$mount('#app')
+	</script>
+</body>
+</html>
