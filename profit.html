@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>成本</title>
+	<link href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.13.2/theme-chalk/index.css" rel="stylesheet">
+	<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js"></script>
+	<script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.13.2/index.js"></script>
+	<style type="text/css">
+		.line {
+			line-height: 50px;
+		}
+		.input-w {
+			width: 220px;
+		}
+		.tagC {
+			width: 80px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div class="line flex">
+			<el-tag class="tagC">总金额:</el-tag>
+			<el-input class="input-w" v-model="total" size="small" />
+		</div>
+		<div class="line flex">
+			<el-tag class="tagC">结束金额:</el-tag>
+			<el-input class="input-w" v-model="jstotal" size="small" />
+		</div>
+		<div class="line flex">
+			<el-tag class="tagC">入:</el-tag>
+			<el-input class="input-w" v-model="mr" size="small" />
+		</div>
+		<div class="line flex">
+			<el-tag class="tagC">出:</el-tag>
+			<el-input class="input-w" v-model="mc" size="small" />
+		</div>
+		<div class="line flex">
+			<el-tag class="tagC">日:</el-tag>
+			<el-input class="input-w" v-model="rv" size="small" />
+		</div>
+		<div class="line">
+			<el-tag class="tagC">开始时间:</el-tag>
+			<el-date-picker
+			  size="small"
+	      v-model="kssj"
+	      type="date"
+	      value-format="timestamp"
+	      @change="sjChange"
+	      placeholder="开始时间">
+		  </el-date-picker>
+		</div>
+		<div class="line">
+			<el-tag class="tagC">结束时间:</el-tag>
+			<el-date-picker
+			  size="small"
+	      v-model="jssj"
+	      type="date"
+	      value-format="timestamp"
+	      @change="sjChange"
+	      placeholder="结束时间">
+		  </el-date-picker>
+		</div>
+		<div class="line">
+			<el-button size="small" type="primary" @click="jisuan">计算</el-button>
+		</div>
+		<div class="line">
+			<el-tag type="danger">时差: {{ res.shijian }} 天</el-tag>
+			<el-tag type="danger">产生费用: {{ res.csfy }} </el-tag>
+			<el-tag type="danger">总盈: {{ res.zyl }} </el-tag>
+		</div>
+		<div class="line">
+			<el-tag type="danger">买入费用: {{ res.mrfy }} 卖出费用: {{res.mcfy}} 利息: {{res.cslx}}</el-tag>
+			<el-tag type="danger">毛盈: {{ res.myl }} </el-tag>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var app = new Vue({
+      el: '#app',
+		  data: {
+		  	total:'',
+		  	jstotal: '',
+		  	kssj: '',
+		  	jssj: '',
+		  	mr: 0.0015,
+		  	mc: 0.015,
+		  	rv: 0.001,
+		  	res: {
+		  		shijian: 0,
+			  	zyl: 0,
+			  	csfy: 0,
+			  	myl: 0,
+			  	mrfy: 0,
+			  	mcfy: 0,
+			  	cslx: 0
+		  	}
+		  },
+		  created() {
+		  	// this.jssjc()
+		  },
+		  methods: {
+		  	sjChange() {
+		  		if(this.kssj && this.jssj) {
+			  		this.res.shijian = Math.floor((this.jssj - this.kssj) / (24*3600*1000))
+			  	}
+		  	},
+		  	jisuan() {
+		  		this.res.zyl = this.jstotal - this.total
+		  		// 计算产生的费用
+		  		this.res.mrfy = (this.total * this.mr)
+		  		this.res.mcfy = (this.jstotal * this.mc)
+		  		this.res.cslx = this.total * this.rv * this.res.shijian
+		  		this.res.csfy = this.res.mrfy + this.res.mcfy + this.res.cslx
+		  		this.res.myl = this.res.zyl - this.res.csfy
+		  	}
+		  }
+		}).$mount('#app')
+	</script>
+</body>
+</html>
