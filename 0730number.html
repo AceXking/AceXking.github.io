@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-	<title>成本</title>
+	<title>入场</title>
 	<link href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.13.2/theme-chalk/index.css" rel="stylesheet">
 	<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js"></script>
 	<script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.13.2/index.js"></script>
@@ -70,17 +70,17 @@
 			</el-table-column>
 			<el-table-column align="center" label="周差" prop="zhoucha" sortable :sort-method="sortZhou">
 				<template slot-scope="scope">
-					<el-tag type="info">{{ scope.row.zhouCha}}</el-tag>
+					<el-tag type="info">{{ scope.row.zhouCha}}%</el-tag>
 				</template>
 			</el-table-column>
 			<el-table-column align="center" label="1月差" prop="yicha" sortable :sort-method="sortYi">
 				<template slot-scope="scope">
-					<el-tag type="warning">{{ scope.row.yiCha}}</el-tag>
+					<el-tag type="warning">{{ scope.row.yiCha}}%</el-tag>
 				</template>
 			</el-table-column>
 			<el-table-column align="center" label="3月差" prop="sancha" sortable :sort-method="sortSan">
 				<template slot-scope="scope">
-					<el-tag type="danger">{{ scope.row.sanCha}}</el-tag>
+					<el-tag type="danger">{{ scope.row.sanCha}}%</el-tag>
 				</template>
 			</el-table-column>
     </el-table>
