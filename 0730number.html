@@ -68,19 +68,19 @@
 					<el-tag>{{ scope.row.jzCha}}</el-tag>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="周差" prop="zhoucha" sortable>
+			<el-table-column align="center" label="周差" prop="zhoucha" sortable :sort-method="sortZhou">
 				<template slot-scope="scope">
-					<el-tag type="info">{{ scope.row.zhouCha}}%</el-tag>
+					<el-tag type="info">{{ scope.row.zhouCha}}</el-tag>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="1月差" prop="yicha" sortable>
+			<el-table-column align="center" label="1月差" prop="yicha" sortable :sort-method="sortYi">
 				<template slot-scope="scope">
-					<el-tag type="warning">{{ scope.row.yiCha}}%</el-tag>
+					<el-tag type="warning">{{ scope.row.yiCha}}</el-tag>
 				</template>
 			</el-table-column>
-			<el-table-column align="center" label="3月差" prop="sancha" sortable>
+			<el-table-column align="center" label="3月差" prop="sancha" sortable :sort-method="sortSan">
 				<template slot-scope="scope">
-					<el-tag type="danger">{{ scope.row.sanCha}}%</el-tag>
+					<el-tag type="danger">{{ scope.row.sanCha}}</el-tag>
 				</template>
 			</el-table-column>
     </el-table>
@@ -255,7 +255,16 @@
 						this.$set(item, 'sanCha', item.jieshu.san - item.kaishi.san)
 					})
 					console.log(JSON.stringify(this.tableData))
-				}
+				},
+				sortZhou(a,b) {
+					return a.zhouCha - b.zhouCha
+				},
+				sortYi(a,b) {
+					return a.yiCha - b.yiCha
+				},
+				sortSan(a,b) {
+					return a.sanCha - b.sanCha
+				},
 		  }
 		}).$mount('#app')
 	</script>
