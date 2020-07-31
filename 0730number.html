@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>成本</title>
+	<link href="https://cdn.bootcdn.net/ajax/libs/element-ui/2.13.2/theme-chalk/index.css" rel="stylesheet">
+	<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js"></script>
+	<script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.13.2/index.js"></script>
+	<style type="text/css">
+	.flex {
+		display: flex;
+	}
+	.tag-k {
+		flex: 1;
+		margin-bottom: 2px;
+	}
+	.tag {
+		width: 70px;
+		margin-right: 10px;
+		margin-bottom: 2px;
+	}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<el-button type="primary" @click="countEvent">计算</el-button>
+		<el-table
+      :data="tableData"
+      style="width: 100%">
+			<el-table-column align="center" prop="name" label="名称" width="300" sortable>
+			</el-table-column>
+			<el-table-column align="center" label="7月30日值" width="200">
+				<template slot-scope="scope">
+					<div class="flex"><el-tag class="tag-k">净值: {{ scope.row.kaishi.jz }}</el-tag></div>
+					<div class="flex"><el-tag class="tag-k" type="info">近1周: {{scope.row.kaishi.zhou}}%</el-tag></div>
+					<div class="flex"><el-tag class="tag-k" type="warning">近1月: {{scope.row.kaishi.yi}}%</el-tag></div>
+					<div class="flex"><el-tag class="tag-k" type="danger">近3月: {{scope.row.kaishi.san}}%</el-tag></div>
+				</template>
+			</el-table-column>
+			<el-table-column align="center" label="当前时间" width="300">
+				<template slot-scope="scope">
+					<div class="flex">
+						<el-tag class="tag">净值:</el-tag>
+						<el-input size="small" v-model="scope.row.jieshu.jz" />
+					</div>
+					<div class="flex">
+						<el-tag class="tag" type="info">近1周:</el-tag>
+						<el-input size="small" v-model="scope.row.jieshu.zhou" />
+					</div>
+					<div class="flex">
+						<el-tag class="tag" type="warning">近1月:</el-tag>
+						<el-input size="small" v-model="scope.row.jieshu.yi" />
+					</div>
+					<div class="flex">
+						<el-tag class="tag" type="danger">近3月:</el-tag>
+						<el-input size="small" v-model="scope.row.jieshu.san" />
+					</div>
+					<!-- <el-tag>净值: {{ scope.row.jieshu.jz }}</el-tag>
+					<el-tag type="info">近1周: {{scope.row.jieshu.zhou}}%</el-tag>
+					<el-tag type="warning">近1月: {{scope.row.jieshu.yi}}%</el-tag>
+					<el-tag type="danger">近3月: {{scope.row.jieshu.san}}%</el-tag> -->
+				</template>
+			</el-table-column>
+			<el-table-column align="center" prop="jzCha" label="净值差" sortable>
+				<template slot-scope="scope">
+					<el-tag>{{ scope.row.jzCha}}</el-tag>
+				</template>
+			</el-table-column>
+			<el-table-column align="center" label="周差" prop="zhoucha" sortable>
+				<template slot-scope="scope">
+					<el-tag type="info">{{ scope.row.zhouCha}}%</el-tag>
+				</template>
+			</el-table-column>
+			<el-table-column align="center" label="1月差" prop="yicha" sortable>
+				<template slot-scope="scope">
+					<el-tag type="warning">{{ scope.row.yiCha}}%</el-tag>
+				</template>
+			</el-table-column>
+			<el-table-column align="center" label="3月差" prop="sancha" sortable>
+				<template slot-scope="scope">
+					<el-tag type="danger">{{ scope.row.sanCha}}%</el-tag>
+				</template>
+			</el-table-column>
+    </el-table>
+	</div>
+	<script type="text/javascript">
+		var app = new Vue({
+      el: '#app',
+		  data: {
+		  	tableData: [
+					{
+						name: '前海开源重要A',
+						kaishi: {
+							jz: 1.8907,
+							zhou: 1.73,
+							yi: 11.22,
+							san: 28.09
+						},
+						jieshu: { jz: 0, zhou: 0, yi: 0, san: 0 }
+					},
+					{
+						name: '中银创新医疗混合',
+						kaishi: {
+							jz: 1.7753,
+							zhou: -0.47,
+							yi: 14.64,
+							san: 44.67
+						},
+						jieshu: { jz: 0, zhou: 0, yi: 0, san: 0 }
+					},
+					{
+						name: '大成科技创新混合C',
+						kaishi: {
+							jz: 1.2656,
+							zhou: -2.05,
+							yi: 10.45,
+							san: 27.04
+						},
+						jieshu: { jz: 0, zhou: 0, yi: 0, san: 0 }
+					},
+					{
+						name: '长城价值优选混合',
+						kaishi: {
+							jz: 1.4221,
+							zhou: 2.66,
+							yi: 22.79,
+							san: 42.01
+						},
+						jieshu: { jz: 0, zhou: 0, yi: 0, san: 0 }
+					},
+					{
+						name: '招商优质成长混合',
+						kaishi: {
+							jz: 3.0846,
+							zhou: 2.10,
+							yi: 25.01,
+							san: 49.28
+						},
+						jieshu: { jz: 0, zhou: 0, yi: 0, san: 0 }
+					},
+					{
+						name: '招商盛达灵活配置混合A',
+						kaishi: {
+							jz: 1.8670,
+							zhou: -3.11,
+							yi: 10.08,
+							san: 38.71
+						},
+						jieshu: { jz: 0, zhou: 0, yi: 0, san: 0 }
+					},
+					{
+						name: '天弘医疗健康混合C',
+						kaishi: {
+							jz: 1.9733,
+							zhou: 2.63,
+							yi: 19.37,
+							san: 52.48
+						},
+						jieshu: { jz: 0, zhou: 0, yi: 0, san: 0 }
+					},
+					{
+						name: '天弘医疗健康混合A',
+						kaishi: {
+							jz: 2.0065,
+							zhou: 2.63,
+							yi: 19.41,
+							san: 52.63
+						},
+						jieshu: { jz: 0, zhou: 0, yi: 0, san: 0 }
+					},
+					{
+						name: '诺安成长混合',
+						kaishi: {
+							jz: 1.9220,
+							zhou: -1.28,
+							yi: 11.10,
+							san: 29.25
+						},
+						jieshu: { jz: 0, zhou: 0, yi: 0, san: 0 }
+					},
+					{
+						name: '易方达生物科技',
+						kaishi: {
+							jz: 1.0895,
+							zhou: 2.11,
+							yi: 19.33,
+							san: 54.62
+						},
+						jieshu: { jz: 0, zhou: 0, yi: 0, san: 0 }
+					},
+					{
+						name: '招商医药健康产业',
+						kaishi: {
+							jz: 3.1150,
+							zhou: 0.94,
+							yi: 16.14,
+							san: 52.10
+						},
+						jieshu: { jz: 0, zhou: 0, yi: 0, san: 0 }
+					},
+					{
+						name: '招商国证生物医药指数',
+						kaishi: {
+							jz: 1.1301,
+							zhou: 1.92,
+							yi: 16.14,
+							san: 52.10
+						},
+						jieshu: { jz: 0, zhou: 0, yi: 0, san: 0 }
+					},
+					{
+						name: '大摩健康产业混合',
+						kaishi: {
+							jz: 2.7600,
+							zhou: -1.43,
+							yi: 10.40,
+							san: 36.77
+						},
+						jieshu: { jz: 0, zhou: 0, yi: 0, san: 0 }
+					},
+					{
+						name: '中欧医疗健康混合C',
+						kaishi: {
+							jz: 3.1370,
+							zhou: -1.85,
+							yi: 8.43,
+							san: 44.23
+						},
+						jieshu: { jz: 0, zhou: 0, yi: 0, san: 0 }
+					},
+					{
+						name: '招商中证白酒指数分级',
+						kaishi: {
+							jz: 1.3957,
+							zhou: 0.31,
+							yi: 18.14,
+							san: 43.38
+						},
+						jieshu: { jz: 0, zhou: 0, yi: 0, san: 0 }
+					},
+		  	]
+		  },
+		  created() {
+				// this.jssjc()
+				this.countEvent()
+		  },
+		  methods: {
+				countEvent() {
+					this.tableData.forEach(item => {
+						this.$set(item, 'jzCha', item.jieshu.jz - item.kaishi.jz)
+						this.$set(item, 'zhouCha', item.jieshu.zhou - item.kaishi.zhou)
+						this.$set(item, 'yiCha', item.jieshu.yi - item.kaishi.yi)
+						this.$set(item, 'sanCha', item.jieshu.san - item.kaishi.san)
+					})
+					console.log(JSON.stringify(this.tableData))
+				}
+		  }
+		}).$mount('#app')
+	</script>
+</body>
+</html>
