@@ -98,7 +98,7 @@
 							yi: 11.22,
 							san: 28.09
 						},
-						jieshu: { jz: 0, zhou: 0, yi: 0, san: 0 }
+						jieshu: { jz: 1.9474, zhou: 9.72, yi: 13.33, san: 33.27 }
 					},
 					{
 						name: '中银创新医疗混合',
@@ -108,7 +108,7 @@
 							yi: 14.64,
 							san: 44.67
 						},
-						jieshu: { jz: 0, zhou: 0, yi: 0, san: 0 }
+						jieshu: { jz: 1.8275, zhou: 7.51, yi: 20.75, san: 49.77 }
 					},
 					{
 						name: '大成科技创新混合C',
@@ -118,7 +118,7 @@
 							yi: 10.45,
 							san: 27.04
 						},
-						jieshu: { jz: 0, zhou: 0, yi: 0, san: 0 }
+						jieshu: { jz: 1.3016, zhou: 7.40, yi: 14.88, san: 31.58 }
 					},
 					{
 						name: '长城价值优选混合',
@@ -128,7 +128,7 @@
 							yi: 22.79,
 							san: 42.01
 						},
-						jieshu: { jz: 0, zhou: 0, yi: 0, san: 0 }
+						jieshu: { jz: 1.4566, zhou: 10.34, yi: 25.07, san: 46.03 }
 					},
 					{
 						name: '招商优质成长混合',
@@ -138,7 +138,7 @@
 							yi: 25.01,
 							san: 49.28
 						},
-						jieshu: { jz: 0, zhou: 0, yi: 0, san: 0 }
+						jieshu: { jz: 3.1537, zhou: 9.20, yi: 25.75, san: 53.10 }
 					},
 					{
 						name: '招商盛达灵活配置混合A',
@@ -148,7 +148,7 @@
 							yi: 10.08,
 							san: 38.71
 						},
-						jieshu: { jz: 0, zhou: 0, yi: 0, san: 0 }
+						jieshu: { jz: 1.9356, zhou: 11.03, yi: 16.95, san: 46.58 }
 					},
 					{
 						name: '天弘医疗健康混合C',
@@ -158,17 +158,7 @@
 							yi: 19.37,
 							san: 52.48
 						},
-						jieshu: { jz: 0, zhou: 0, yi: 0, san: 0 }
-					},
-					{
-						name: '天弘医疗健康混合A',
-						kaishi: {
-							jz: 2.0065,
-							zhou: 2.63,
-							yi: 19.41,
-							san: 52.63
-						},
-						jieshu: { jz: 0, zhou: 0, yi: 0, san: 0 }
+						jieshu: { jz: 2.0460, zhou: 12.62, yi: 28.99, san: 61.23 }
 					},
 					{
 						name: '诺安成长混合',
@@ -178,7 +168,7 @@
 							yi: 11.10,
 							san: 29.25
 						},
-						jieshu: { jz: 0, zhou: 0, yi: 0, san: 0 }
+						jieshu: { jz: 2.0170, zhou: 12.45, yi: 16.87, san: 37.93 }
 					},
 					{
 						name: '易方达生物科技',
@@ -188,7 +178,7 @@
 							yi: 19.33,
 							san: 54.62
 						},
-						jieshu: { jz: 0, zhou: 0, yi: 0, san: 0 }
+						jieshu: { jz: 1.1305, zhou: 11.81, yi: 27.40, san: 61.95 }
 					},
 					{
 						name: '招商医药健康产业',
@@ -198,7 +188,7 @@
 							yi: 16.14,
 							san: 52.10
 						},
-						jieshu: { jz: 0, zhou: 0, yi: 0, san: 0 }
+						jieshu: { jz: 3.2065, zhou: 10.49, yi: 24.18, san: 58.98 }
 					},
 					{
 						name: '招商国证生物医药指数',
@@ -208,7 +198,7 @@
 							yi: 16.14,
 							san: 52.10
 						},
-						jieshu: { jz: 0, zhou: 0, yi: 0, san: 0 }
+						jieshu: { jz: 1.1744, zhou: 11.95, yi: 30.3, san: 63.99 }
 					},
 					{
 						name: '大摩健康产业混合',
@@ -218,7 +208,7 @@
 							yi: 10.40,
 							san: 36.77
 						},
-						jieshu: { jz: 0, zhou: 0, yi: 0, san: 0 }
+						jieshu: { jz: 2.8151, zhou: 6.75, yi: 16.31, san: 41.03 }
 					},
 					{
 						name: '中欧医疗健康混合C',
@@ -228,18 +218,8 @@
 							yi: 8.43,
 							san: 44.23
 						},
-						jieshu: { jz: 0, zhou: 0, yi: 0, san: 0 }
-					},
-					{
-						name: '招商中证白酒指数分级',
-						kaishi: {
-							jz: 1.3957,
-							zhou: 0.31,
-							yi: 18.14,
-							san: 43.38
-						},
-						jieshu: { jz: 0, zhou: 0, yi: 0, san: 0 }
-					},
+						jieshu: { jz: 3.2414, zhou: 7.00, yi: 15.22, san: 49.70 }
+					}
 		  	]
 		  },
 		  created() {
@@ -249,12 +229,18 @@
 		  methods: {
 				countEvent() {
 					this.tableData.forEach(item => {
-						this.$set(item, 'jzCha', item.jieshu.jz - item.kaishi.jz)
-						this.$set(item, 'zhouCha', item.jieshu.zhou - item.kaishi.zhou)
-						this.$set(item, 'yiCha', item.jieshu.yi - item.kaishi.yi)
-						this.$set(item, 'sanCha', item.jieshu.san - item.kaishi.san)
+						this.$set(item, 'jzCha', (item.jieshu.jz - item.kaishi.jz).toFixed(4))
+						this.$set(item, 'zhouCha', (item.jieshu.zhou - item.kaishi.zhou).toFixed(4))
+						this.$set(item, 'yiCha', (item.jieshu.yi - item.kaishi.yi).toFixed(4))
+						this.$set(item, 'sanCha', (item.jieshu.san - item.kaishi.san).toFixed(4))
 					})
-					console.log(JSON.stringify(this.tableData))
+					// console.log(JSON.stringify(this.tableData))
+					// window.postMessage('message from iframe1','http://localhost:8080/#/login')
+					// var popup = window.open('http://localhost:8080/#/login', 'title');
+					// popup.postMessage('Hello World!', 'http://localhost:8080/#/login');
+					// window.parent.postMessage({data: 'login'}, '*');
+					window.parent.postMessage('Nice to see you', '*');
+					console.log(window.parent)
 				},
 				sortZhou(a,b) {
 					return a.zhouCha - b.zhouCha
@@ -267,6 +253,7 @@
 				},
 		  }
 		}).$mount('#app')
+		"https://open.weixin.qq.com/connect/qrconnect?appid=wx2160ef1d3d896033&redirect_uri=http%3a%2f%2ffangzhen.longkukj.com%2f&response_type=code&scope=snsapi_login&state=STATE#wechat_redirect"
 	</script>
 </body>
 </html>
